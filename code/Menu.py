@@ -19,6 +19,7 @@ class Menu:
         pygame.mixer_music.load("./asset/grimghosts.mp3")
         pygame.mixer_music.play(-1)
         while True:
+            # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(150, text="GHOST ARROW",  text_color=(COLOR_BLACK), text_center_pos=((WIN_WIDTH/2),200))
 
@@ -27,6 +28,7 @@ class Menu:
                    self.menu_text(50, MENU_OPTION[i], text_color=(COLOR_YELLOW), text_center_pos=(300 + 200 * i, 350))
                else:
                 self.menu_text(50, MENU_OPTION[i], text_color=(COLOR_RED),text_center_pos=(300 + 200 * i, 350))
+            pygame.display.flip()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -38,16 +40,16 @@ class Menu:
                           menu_option +=1
                        else:
                           menu_option =0
-
                     if event.key == pygame.K_LEFT:
                         if menu_option >0:
                             menu_option -= 1
                         else:
                             menu_option = len(MENU_OPTION) - 1
+                    if event.key == pygame.K_RETURN: #ENTER
+                        return MENU_OPTION[menu_option]
 
 
 
-            pygame.display.flip()
 
 #text menu
     def menu_text(self,text_size:int, text: str, text_color: tuple , text_center_pos:tuple):
