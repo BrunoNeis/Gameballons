@@ -1,12 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from pydoc_data.topics import topics
-from tkinter.font import Font
 import pygame
 from pygame.rect import Rect
 from pygame.surface import Surface
 
-from code.Const import WIN_WIDTH, COLOR_BLACK, MENU_OPTION, COLOR_RED
+from code.Const import WIN_WIDTH, COLOR_BLACK, MENU_OPTION, COLOR_RED, COLOR_YELLOW
 
 
 class Menu:
@@ -15,7 +14,8 @@ class Menu:
         self.surf = pygame.image.load("./asset/Menubg.png")
         self.rect = self.surf.get_rect(left = 0, top=0 )
 
-    def run(self, WIDTH=None):
+    def run(self,):
+        menu_option = 0
         pygame.mixer_music.load("./asset/grimghosts.mp3")
         pygame.mixer_music.play(-1)
         while True:
@@ -23,14 +23,23 @@ class Menu:
             self.menu_text(150, text="GHOST ARROW",  text_color=(COLOR_BLACK), text_center_pos=((WIN_WIDTH/2),200))
 
             for i in range(len(MENU_OPTION)):
+               if i== menu_option:
+                   self.menu_text(50, MENU_OPTION[i], text_color=(COLOR_YELLOW), text_center_pos=(300 + 200 * i, 350))
+               else:
                 self.menu_text(50, MENU_OPTION[i], text_color=(COLOR_RED),text_center_pos=(300 + 200 * i, 350))
-
-            pygame.display.flip()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()  # close Window
                     quit()  # end pygame.
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RIGHT:
+                       if menu_option < len(MENU_OPTION) -1:
+                          menu_option +=1
+                       else:
+                          menu_option =0
+
+            pygame.display.flip()
 
 #text menu
     def menu_text(self,text_size:int, text: str, text_color: tuple , text_center_pos:tuple):
