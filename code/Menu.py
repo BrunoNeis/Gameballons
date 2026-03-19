@@ -33,11 +33,19 @@ class Menu:
                     pygame.quit()  # close Window
                     quit()  # end pygame.
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_RIGHT:
+                    if event.key == pygame.K_RIGHT: #MOVE FOR
                        if menu_option < len(MENU_OPTION) -1:
                           menu_option +=1
                        else:
                           menu_option =0
+
+                    if event.key == pygame.K_LEFT:
+                        if menu_option >0:
+                            menu_option -= 1
+                        else:
+                            menu_option = len(MENU_OPTION) - 1
+
+
 
             pygame.display.flip()
 
