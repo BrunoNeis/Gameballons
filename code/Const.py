@@ -11,6 +11,11 @@ ENTITY_SPEED= {
     'Level1Bg2': 0,
     'Level1Bg3': 0,
     'Level1Bg4': 1,
+    'Player1': 3,
+    'Player2': 3,
+
+
+
 }
 
 
