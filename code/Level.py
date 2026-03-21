@@ -1,9 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import random
 import sys
 
 import pygame
-from code.Const import COLOR_RED, WIN_HEIGHT, MENU_OPTION
+from code.Const import COLOR_RED, WIN_HEIGHT, MENU_OPTION, EVENT_GHOST, SPAW_TIME
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from pygame.font import Font
@@ -22,6 +23,11 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity('Player1'))
         if game_mode in [MENU_OPTION[1]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pygame.time.set_timer(EVENT_GHOST,SPAW_TIME)
+
+
+
+
 
     def run(self,):
         pygame.mixer_music.load(f'./asset/{self.name}.mp3')
@@ -36,6 +42,15 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_GHOST:
+                    choice = random.choice(('Ghost1','Ghost2','Ghost3'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
+
+
+
+
+
+
 
             #printed text
             self.level_text(35, f'{self.name}- Timeout: {self.timeout / 1000:.1f}s', COLOR_RED,(10,5))
