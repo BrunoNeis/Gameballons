@@ -6,7 +6,7 @@ from pygame.font import Font
 from pygame.rect import Rect
 from pygame.surface import Surface
 
-from code.Const import WIN_WIDTH, COLOR_BLACK, MENU_OPTION, COLOR_RED, COLOR_YELLOW
+from code.Const import WIN_WIDTH, C_BLACK, MENU_OPTION, C_RED, C_YELLOW
 
 
 class Menu:
@@ -22,13 +22,13 @@ class Menu:
         while True:
             # DRAW IMAGES
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(150, text="GHOST ARROW",  text_color=(COLOR_BLACK), text_center_pos=((WIN_WIDTH/2),200))
+            self.menu_text(150, text="GHOST ARROW",  text_color=(C_BLACK), text_center_pos=((WIN_WIDTH/2),200))
 
             for i in range(len(MENU_OPTION)):
                if i== menu_option:
-                   self.menu_text(50, MENU_OPTION[i], text_color=(COLOR_YELLOW), text_center_pos=(200 + 200 * i, 350))
+                   self.menu_text(50, MENU_OPTION[i], text_color=(C_YELLOW), text_center_pos=(200 + 200 * i, 350))
                else:
-                self.menu_text(50, MENU_OPTION[i], text_color=(COLOR_RED),text_center_pos=(200 + 200 * i, 350))
+                self.menu_text(50, MENU_OPTION[i], text_color=(C_RED),text_center_pos=(200 + 200 * i, 350))
             pygame.display.flip()
 
             for event in pygame.event.get():

@@ -22,7 +22,7 @@ class Player(Entity):
             self.rect.centery += ENTITY_SPEED[self.name]
         if pressed_key[PLAYER_KEY_LEFT[self.name]]and self.rect.left > 0:
             self.rect.centerx -= ENTITY_SPEED[self.name]
-        if pressed_key[PLAYER_KEY_RIGHT[self.name]]and self.rect.right < WIN_WIDTH / 3:
+        if pressed_key[PLAYER_KEY_RIGHT[self.name]]and self.rect.right < WIN_WIDTH / 2:
             self.rect.centerx += ENTITY_SPEED[self.name]
         pass
 

@@ -2,13 +2,79 @@
 import pygame
 
 #C
-COLOR_BLACK = (0,0,0)
-COLOR_RED = (255,0,0)
-COLOR_YELLOW = (255,255,0)
-
+C_BLACK = (0,0,0)
+C_RED = (255,0,0)
+C_YELLOW = (255,255,0)
+C_ORANGE = (255,177,0)
+C_BLUE = (8,155,189)
 
 #E
 EVENT_GHOST= pygame.USEREVENT + 1
+
+ENTITY_DAMAGE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Level1Bg3': 0,
+    'Level1Bg4': 0,
+    'Level2Bg0': 0,
+    'Level2Bg1': 0,
+    'Level2Bg2': 0,
+    'Level2Bg3': 0,
+    'Level2Bg4': 0,
+    'Level3Bg0': 0,
+    'Level3Bg1': 0,
+    'Level3Bg2': 0,
+    'Level3Bg3': 0,
+    'Level3Bg4': 0,
+    'Level4Bg0': 0,
+    'Level4Bg1': 0,
+    'Level4Bg2': 0,
+    'Level4Bg3': 0,
+    'Level4Bg4': 0,
+    'Player1': 1,
+    "Player1Shot":25,
+    'Player2':1,
+    "Player2Shot":25,
+    'Ghost1':1,
+    'Ghost1Shot':25,
+    'Ghost2':1,
+    'Ghost2Shot':27,
+    'Ghost3':1,
+    'Ghost3Shot':30,
+}
+ENTITY_SCORE = {
+    'Level1Bg0': 0,
+    'Level1Bg1': 0,
+    'Level1Bg2': 0,
+    'Level1Bg3': 0,
+    'Level1Bg4': 0,
+    'Level2Bg0': 0,
+    'Level2Bg1': 0,
+    'Level2Bg2': 0,
+    'Level2Bg3': 0,
+    'Level2Bg4': 0,
+    'Level3Bg0': 0,
+    'Level3Bg1': 0,
+    'Level3Bg2': 0,
+    'Level3Bg3': 0,
+    'Level3Bg4': 0,
+    'Level4Bg0': 0,
+    'Level4Bg1': 0,
+    'Level4Bg2': 0,
+    'Level4Bg3': 0,
+    'Level4Bg4': 0,
+    'Player1': 0,
+    "Player1Shot":0,
+    'Player2':0,
+    "Player2Shot":0,
+    'Ghost1':110,
+    'Ghost1Shot':0,
+    'Ghost2':125,
+    'Ghost2Shot':0,
+    'Ghost3':135,
+    'Ghost3Shot':0,
+}
 
 ENTITY_SPEED= {
     'Level1Bg0': 0,
@@ -16,10 +82,10 @@ ENTITY_SPEED= {
     'Level1Bg2': 1,
     'Level1Bg3': 0,
     'Level1Bg4': 1,
-    'Player1': 3,
-    "Player1Shot":1,
-    'Player2': 3,
-    "Player2Shot":1,
+    'Player1': 4,
+    "Player1Shot":5,
+    'Player2': 4,
+    "Player2Shot":5,
     "Ghost1":2,
     "Ghost1Shot":4,
     "Ghost2":1,
@@ -54,11 +120,11 @@ ENTITY_HEALTH= {
     "Player1Shot":3,
     'Player2':400,
     "Player2Shot":3,
-    'Ghost1':20,
+    'Ghost1':30,
     'Ghost1Shot':1,
-    'Ghost2':30,
+    'Ghost2':80,
     'Ghost2Shot':2,
-    'Ghost3':50,
+    'Ghost3':100,
     'Ghost3Shot':3,
 
 }

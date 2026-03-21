@@ -4,13 +4,13 @@ import random
 import sys
 
 import pygame
-from code.Const import COLOR_RED, WIN_HEIGHT, MENU_OPTION, EVENT_GHOST, SPAW_TIME
-from code.Entity import Entity
-from code.EntityFactory import EntityFactory
 from pygame.font import Font
 from pygame.rect import Rect
 from pygame.surface import Surface
 
+from code.Const import C_RED, WIN_HEIGHT, MENU_OPTION, EVENT_GHOST, SPAW_TIME, WIN_WIDTH, C_ORANGE, C_BLUE
+from code.Entity import Entity
+from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
 from code.Ghost import Ghost
 from code.Player import Player
@@ -30,9 +30,6 @@ class Level:
         pygame.time.set_timer(EVENT_GHOST,SPAW_TIME)
 
 
-
-
-
     def run(self,):
         pygame.mixer_music.load(f'./asset/{self.name}.mp3')
         pygame.mixer_music.play(-1)
@@ -46,8 +43,12 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
-
-
+                if ent.name == 'Player1':
+                    self.level_text(30, f'Player1-Health:{ent.health}',C_ORANGE,(10,10))
+                    self.level_text(30, f'Player1-SCORE: {ent.score}', C_ORANGE, (10,35))
+                if ent.name == 'Player2':
+                    self.level_text(30, f'Player2-Health: {ent.health}',C_BLUE,(780,10))
+                    self.level_text(30, f'Player2-SCORE: {ent.score}', C_BLUE, (780,35))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -56,16 +57,10 @@ class Level:
                     choice = random.choice(('Ghost1','Ghost2','Ghost3'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
 
-
-
-
-
-
-
             #printed text
-            self.level_text(35, f'{self.name}- Timeout: {self.timeout / 1000:.1f}s', COLOR_RED,(10,5))
-            self.level_text(15, f'fps:{clock.get_fps():.0f}',COLOR_RED, (10,WIN_HEIGHT - 35))
-            self.level_text(15, f'entidades:{len(self.entity_list)}', COLOR_RED, (10, WIN_HEIGHT - 20))
+            self.level_text(35, f'{self.name}- Timeout: {self.timeout / 1000:.1f}s', C_RED,(WIN_WIDTH/3,10))
+            self.level_text(15, f'fps:{clock.get_fps():.0f}',C_RED, (10,WIN_HEIGHT - 35))
+            self.level_text(15, f'entidades:{len(self.entity_list)}', C_RED, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
             pygame.display.flip()
             #check the collision
