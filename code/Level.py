@@ -33,7 +33,6 @@ class Level:
             player = EntityFactory.get_entity('Player2')
             player.score = player_score[1]
             self.entity_list.append(player)
-
         pygame.time.set_timer(EVENT_GHOST,SPAW_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
 
@@ -72,19 +71,13 @@ class Level:
                             if isinstance(ent, Player) and ent.name == 'Player2':
                                 player_score[1] = ent.score
                         return True
-
-
                 found_player = False
                 for ent in self.entity_list:
                     if isinstance(ent, Player):
                         found_player = True
-
                 if not found_player:
                        gameover = GameOver(self.window)
                        return gameover.show()
-
-
-
 
             #printed text
             self.level_text(35, f'{self.name}- Timeout: {self.timeout / 1000:.1f}s', C_RED,(WIN_WIDTH/3,10))

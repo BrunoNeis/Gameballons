@@ -1,5 +1,4 @@
 
-from abc import ABC,abstractmethod
 import pygame.image
 
 from code.Const import WIN_WIDTH
@@ -45,7 +44,6 @@ class EntityMediator:
                 if isinstance(ent1, Player) or isinstance(ent2, Player):
                     playerhit = pygame.mixer.Sound("./asset/Playerhit.mp3")
                     playerhit.play()
-
                 ent1.health -= ent2.damage
                 ent2.health -= ent1.damage
                 ent1.last_dmg = ent2.name
@@ -66,7 +64,6 @@ class EntityMediator:
                 if ent.name == 'Player2':
                     ent.score += ghost.score
 
-
     @staticmethod
     def verify_collision(entity_list: list[Entity]):
        for i  in range(len(entity_list)):
@@ -75,7 +72,6 @@ class EntityMediator:
            for j in range(i+1,len(entity_list)):
                entity2 = entity_list[j]
                EntityMediator.__verify_collision_entity(entity1,entity2)
-
 
     @staticmethod
     def verify_health(entity_list: list[Entity]):

@@ -18,7 +18,6 @@ class DBProxy:
         self.connection.execute('INSERT INTO dados (name, score ,date) VALUES (:name,:score,:date)', score_dict)
         self.connection.commit()
 
-
     def retrieve_top11(self) -> list:
         return self.connection.execute ('SELECT * FROM dados ORDER BY score DESC LIMIT 11').fetchall()
 

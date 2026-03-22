@@ -16,7 +16,6 @@ class GameOver:
         self.rect = self.surf.get_rect(left=0, top=0)
         pass
 
-
     def show(self):
         pygame.mixer_music.load("./asset/GameOver.mp3")
         pygame.mixer_music.play(-1)
@@ -32,7 +31,6 @@ class GameOver:
                 elif event.type == KEYDOWN:
                      return
             pygame.display.flip()
-
 
     def gameover_text(self,text_size:int, text: str, text_color: tuple , text_center_pos:tuple):
         text_font: Font = pygame.font.SysFont(name="Blood Victim Zombie", size=text_size)

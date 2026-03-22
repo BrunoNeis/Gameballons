@@ -23,9 +23,12 @@ class Score:
         pygame.mixer_music.play(-1)
         db_proxy = DBProxy('DBScore')
         name = ''
+
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.score_text(80,'YOU  WIN  !!',C_YELLOW,SCORE_POS['Title'])
+            text = 'Player 1 WIN!! Enter your name (4 Characters)'
+            score = player_score[0]
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
                 text  = 'Player 1 Enter your name (4 Characters)'
@@ -57,7 +60,6 @@ class Score:
             pygame.display.flip()
             pass
 
-
     def show(self):
         pygame.mixer_music.load("./asset/Score.mp3")
         pygame.mixer_music.play(-1)
@@ -67,7 +69,6 @@ class Score:
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top11()
         db_proxy.close()
-
         for player_score in list_score:
             id_, name, score, date = player_score
             self.score_text(35, f'{name}              {score: 05d}                {date}',C_YELLOW,
@@ -80,7 +81,6 @@ class Score:
                 elif event.type ==KEYDOWN:
                      return
             pygame.display.flip()
-
 
     def score_text(self,text_size:int, text: str, text_color: tuple , text_center_pos:tuple):
         text_font: Font = pygame.font.SysFont(name="Blood Victim Zombie", size=text_size)
