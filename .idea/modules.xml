@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Ghost Arrow.iml" filepath="$PROJECT_DIR$/.idea/Ghost Arrow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GhostArrow.iml" filepath="$PROJECT_DIR$/.idea/GhostArrow.iml" />
     </modules>
   </component>
 </project>
