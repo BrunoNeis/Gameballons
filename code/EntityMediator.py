@@ -42,11 +42,14 @@ class EntityMediator:
                 ent1.rect.left <= ent2.rect.right and
                 ent1.rect.bottom >= ent2.rect.top and
                 ent1.rect.top <= ent2.rect.bottom):
+                if isinstance(ent1, Player) or isinstance(ent2, Player):
+                    playerhit = pygame.mixer.Sound("./asset/Playerhit.mp3")
+                    playerhit.play()
 
-              ent1.health -= ent2.damage
-              ent2.health -= ent1.damage
-              ent1.last_dmg = ent2.name
-              ent2.last_dmg = ent1.name
+                ent1.health -= ent2.damage
+                ent2.health -= ent1.damage
+                ent1.last_dmg = ent2.name
+                ent2.last_dmg = ent1.name
 
     @staticmethod
     def __give_score(ghost: Ghost, entity_list: list[Entity]):
