@@ -16,7 +16,7 @@ class GameOver:
 
 
     def show_gameover(self):
-        pygame.mixer_music.load("./asset/grimghosts.mp3")
+        pygame.mixer_music.load("./asset/GameOver.mp3")
         pygame.mixer_music.play(-1)
         self.window.blit(source=self.surf, dest=self.rect)
         while True:

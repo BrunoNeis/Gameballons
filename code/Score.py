@@ -8,7 +8,7 @@ from pygame.font import Font
 from pygame.rect import Rect
 from pygame.surface import SurfaceType, Surface
 
-from code.Const import C_YELLOW, SCORE_POS, MENU_OPTION, C_RED, C_BLACK
+from code.Const import C_YELLOW, SCORE_POS, MENU_OPTION, C_RED, C_BLACK, C_ORANGE
 from code.DBProxy import DBProxy
 
 class Score:
@@ -53,24 +53,24 @@ class Score:
                         if len(name) < 4:
                             name += event.unicode
 
-            self.score_text(20, name, C_YELLOW, SCORE_POS['Name'])
+            self.score_text(30, name, C_YELLOW, SCORE_POS['Name'])
             pygame.display.flip()
             pass
 
 
     def show(self):
-        pygame.mixer_music.load("./asset/grimghosts.mp3")
+        pygame.mixer_music.load("./asset/Score.mp3")
         pygame.mixer_music.play(-1)
         self.window.blit(source=self.surf, dest=self.rect)
-        self.score_text(60, 'TOP 11 SCORE', C_BLACK, SCORE_POS['Title'])
-        self.score_text(35, 'NAME       SCORE           DATE            ',C_BLACK, SCORE_POS['Label'])
+        self.score_text(60, 'TOP 11 SCORE', C_RED, SCORE_POS['Title'])
+        self.score_text(45, 'NAME         SCORE          DATE            ',C_ORANGE, SCORE_POS['Label'])
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top11()
         db_proxy.close()
 
         for player_score in list_score:
             id_, name, score, date = player_score
-            self.score_text(20, f'{name}     {score: 05d}           {date}',C_YELLOW,
+            self.score_text(35, f'{name}              {score: 05d}                {date}',C_YELLOW,
                             SCORE_POS[list_score.index(player_score)])
         while True:
             for event in pygame.event.get():
